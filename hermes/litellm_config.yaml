@@ -1,0 +1,30 @@
+general_settings:
+  allow_user_model_list: false
+  disable_spend_logs: false
+  master_key: sk-your-litellm-master-key
+litellm_settings:
+  cache: true
+  cache_params:
+    ttl: 300
+    type: local
+  default_litellm_params:
+    stream: false
+  drop_params: true
+  json_logs: false
+  request_timeout: 120
+model_list:
+- litellm_params:
+    api_base: https://api.x.ai/v1
+    api_key: os.environ/XAI_API_KEY
+    model: xai/grok-4.20-0309-non-reasoning
+    timeout: 120
+  model_name: grok-4
+router_settings:
+  allowed_fails: 1
+  context_window_fallbacks: []
+  cooldown_time: 60
+  fallbacks:
+  - grok-4: []
+  num_retries: 1
+  retry_after: 0
+  routing_strategy: usage-based-routing-v2
